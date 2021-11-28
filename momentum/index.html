@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="assets/favicon.ico" rel="shortcut icon" />
+  <link rel="stylesheet" href="css/owfont-regular.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>momentum</title>
+</head>
+<body>
+
+  <header class="header">
+
+    <div class="player">
+      <div class="player-controls">
+        <button class="play-prev player-icon"></button>
+        <button class="play player-icon"></button>
+        <button class="play-next player-icon"></button>
+      </div>
+      <ul class="play-list"></ul>
+    </div>
+    <!-- extra-audio-controls -->
+    <div class="extra-audio-controls">
+      <div class="track-name"></div>
+      <div class="extra-audio-controls-inner">
+        <div class="play-progress">
+          <div class="play-progress-filled"></div>
+        </div>
+        <div class="show-time">
+          <div class="current-time"></div>
+          <div class="duration"></div>
+        </div>
+        <div class="audio-controls-volume-button">
+        </div>
+        <input type="range" name="volume" class="player-slider volumen-slider" min="0" max="1" step="0.05" value="0.5">
+      </div>
+    </div>
+
+
+
+
+    <div class="weather">
+      <input type="text" class="city" placeholder="Enter city"/>
+      <i class="weather-icon owf"></i>
+      <div class="weather-error"></div>
+      <div class="description-container">
+        <span class="temperature"></span>
+        <span class="weather-description"></span>
+      </div>
+      <div class="wind"></div>
+      <div class="humidity"></div>
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <div class="slider-icons">
+      <button class="slide-prev slider-icon"></button>
+      <button class="slide-next slider-icon"></button>
+    </div>
+
+    <time class="time"></time>
+    <date class="date"></date>
+
+    <div class="greeting-container">
+      <span class="greeting"></span>
+      <input type="text" class="name" placeholder="[Enter name]"/>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+
+    <button class="change-quote"></button>
+    <div>
+      <div class="quote"></div>
+      <div class="author"></div>
+    </div>
+
+    <div class="settings">
+
+      <div class="language">
+        <div class="lang-topic">Language</div>
+        <div class="radioBtn-wrapper">
+          <div class="lang-en-div">
+            <input type="radio" name="language" class="lang-radio-buttons" id="en" value="en" checked   onchange="setLanguage(this);"/>
+            <label for="en">English</label>
+          </div>
+          <div class="lang-ru-div">
+            <input type="radio" name="language" class="lang-radio-buttons" id="ru" value="ru" onchange="setLanguage(this);"/>
+            <label for="ru">Russian</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-source">
+        <div class="image-source-topic">Image Source</div>
+        <div class="radioBtn-wrapper2">
+          <div class="github-div">
+            <input type="radio" name="image-source" class="image-source-buttons" id="github" value="github"  checked onchange="setSource(this);"/>
+            <label for="github">Github</label>
+          </div>
+          <div class="unsplash-div">
+            <input type="radio" name="image-source" class="image-source-buttons" id="unsplash" value="unsplash" onchange="setSource(this);"/>
+            <label for="unsplash">Unsplash</label>
+          </div>
+          <div class="flickr-div">
+            <input type="radio" name="image-source" class="image-source-buttons" id="flickr" value="flickr" onchange="setSource(this);"/>
+            <label for="flickr">Flickr</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="widgets">
+        <div class="widgets-topic">Widgets</div>
+        <div class="radioBtn-wrapper3">
+
+          <div class="radioBtn-little-wrapper">
+            <div class="widget-name">Time</div>
+            <div class="widget-toggle">
+              <div class="toggle-div">
+                <input type="radio" name="time" class="time-radio-buttons" id="time-show" value="show" checked onchange="displayTimeWidget(this);"/>
+                <label for="time-show">+</label>
+              </div>
+              <div class="toggle-div">
+                <input type="radio" name="time" class="lang-radio-buttons" id="time-hide" value="hide" onchange="displayTimeWidget(this);"/>
+                <label for="time-hide">-</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="radioBtn-little-wrapper">
+            <div class="widget-name">Date</div>
+            <div class="widget-toggle">
+              <div class="toggle-div">
+                <input type="radio" name="date" class="date-radio-buttons" id="date-show" value="show" checked onchange="displayDateWidget(this);"/>
+                <label for="date-show">+</label>
+              </div>
+              <div class="toggle-div">
+                <input type="radio" name="date" class="date-radio-buttons" id="date-hide" value="hide" onchange="displayDateWidget(this);"/>
+                <label for="date-hide">-</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="radioBtn-little-wrapper">
+            <div class="widget-name">Greeting</div>
+            <div class="widget-toggle">
+              <div class="toggle-div">
+                <input type="radio" name="greeting" class="greeting-radio-buttons" id="greeting-show" value="show" checked onchange="displayGreetingWidget(this);"/>
+                <label for="greeting-show">+</label>
+              </div>
+              <div class="toggle-div">
+                <input type="radio" name="greeting" class="greeting-radio-buttons" id="greeting-hide" value="hide" onchange="displayGreetingWidget(this);"/>
+                <label for="greeting-hide">-</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="radioBtn-little-wrapper">
+            <div class="widget-name">Quote</div>
+            <div class="widget-toggle">
+              <div class="toggle-div">
+                <input type="radio" name="quote" class="quote-radio-buttons" id="quote-show" value="show" checked onchange="displayQuoteWidget(this);"/>
+                <label for="quote-show">+</label>
+              </div>
+              <div class="toggle-div">
+                <input type="radio" name="quote" class="quote-radio-buttons" id="quote-hide" value="hide" onchange="displayQuoteWidget(this);"/>
+                <label for="quote-hide">-</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="radioBtn-little-wrapper">
+            <div class="widget-name">Weather</div>
+            <div class="widget-toggle">
+              <div class="toggle-div">
+                <input type="radio" name="weather" class="weather-radio-buttons" id="weather-show" value="show" checked onchange="displayWeatherWidget(this);"/>
+                <label for="weather-show">+</label>
+              </div>
+              <div class="toggle-div">
+                <input type="radio" name="weather" class="weather-radio-buttons" id="weather-hide" value="hide" onchange="displayWeatherWidget(this);"/>
+                <label for="weather-hide">-</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="radioBtn-little-wrapper">
+            <div class="widget-name">Audio</div>
+            <div class="widget-toggle">
+              <div class="toggle-div">
+                <input type="radio" name="audio" class="audio-radio-buttons" id="audio-show" value="show" checked onchange="displayAudioWidget(this);"/>
+                <label for="audio-show">+</label>
+              </div>
+              <div class="toggle-div">
+                <input type="radio" name="audio" class="audio-radio-buttons" id="audio-hide" value="hide" onchange="displayAudioWidget(this);"/>
+                <label for="audio-hide">-</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="radioBtn-little-wrapper">
+            <div class="widget-name">ToDo</div>
+            <div class="widget-toggle">
+              <div class="toggle-div">
+                <input type="radio" name="todo" class="todo-radio-buttons" id="todo-show" value="show" checked onchange="displayToDoWidget(this);"/>
+                <label for="todo-show">+</label>
+              </div>
+              <div class="toggle-div">
+                <input type="radio" name="todo" class="todo-radio-buttons" id="todo-hide" value="hide" onchange="displayToDoWidget(this);"/>
+                <label for="todo-hide">-</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="settings-button">
+      <div class="settings-icon"></div>
+      <p class="settings-p">Settings</p>
+    </div>
+
+    <div class="todo-wrapper">
+      <p>ToDo List</p>
+      <form id="todoForm">
+        <input type="text" id="todoInput">
+        <button type="button" onclick="todoList()">Add Item</button>
+        <button type="button" onclick="clearList()">Clear all</button>
+      </form>
+  
+      <ul id="todoList"></ul>
+    </div>
+  </footer>
+
+  <script src="js/greeting.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/showTimeAndDate.js"></script>
+  <script src="js/imageSlider.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/showQuotes.js"></script>
+  <script src="js/displayWidgets.js"></script>
+  <script src="js/todoList.js"></script>
+  <script src="js/audioPlayer.js"></script>
+
+</body>
+</html>
